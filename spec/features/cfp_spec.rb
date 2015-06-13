@@ -14,7 +14,7 @@ feature Conference do
 
       visit new_admin_conference_call_for_paper_path(conference.short_title)
 
-      click_button 'Create Call for paper'
+      click_button 'Create Call for papers'
 
       expect(flash).
           to eq('Creating the call for papers failed. ' +
@@ -28,7 +28,7 @@ feature Conference do
 
       fill_in 'call_for_paper_rating', with: '4'
 
-      click_button 'Create Call for paper'
+      click_button 'Create Call for papers'
 
       # Validations
       expect(flash).
@@ -51,7 +51,7 @@ feature Conference do
       # Validate update with empty start date will not saved
       page.execute_script(
           "$('#conference-start-datepicker').val('')")
-      click_button 'Update Call for paper'
+      click_button 'Update Call for papers'
       expect(flash).
           to eq('Updating call for papers failed. ' +
                     "Start date can't be blank.")
@@ -64,7 +64,7 @@ feature Conference do
         "$('#conference-end-datepicker').val('#{(today + 14).strftime('%d/%m/%Y')}')")
 
       fill_in 'call_for_paper_rating', with: '0'
-      click_button 'Update Call for paper'
+      click_button 'Update Call for papers'
 
       # Validations
       expect(flash).
